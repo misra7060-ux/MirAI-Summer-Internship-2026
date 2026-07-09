@@ -12,5 +12,17 @@ This repository contains my Streamlit projects completed as part of the MirAI Sc
 - Python
 - Streamlit
 
-### Author
-Riya Mishra
+## Assignment 2
+### AI Multiverse Chatbot
+
+#### Features
+- Multiple AI Personalities
+- Chat with Gemini AI
+- Streamlit User Interface
+- Clear Chat Option
+
+#### Technologies Used
+- Python
+- Streamlit
+- Google Gemini API
+- python-dotenv
