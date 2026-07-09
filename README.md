@@ -26,3 +26,11 @@ This repository contains my Streamlit projects completed as part of the MirAI Sc
 - Streamlit
 - Google Gemini API
 - python-dotenv
+
+## Project Screenshots
+
+### Home Screen
+![Home Screen](home.png)
+
+### Chat Example
+![Chat Example](chat.png)
