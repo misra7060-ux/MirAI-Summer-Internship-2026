@@ -30,7 +30,7 @@ This repository contains my Streamlit projects completed as part of the MirAI Sc
 ## Project Screenshots
 
 ### Home Screen
-![Home Screen](home.png.png)
+![Home Screen](home.png)
 
 ### Chat Example
-![Chat Example](chat.png.png)
+![Chat Example](chat.png)
