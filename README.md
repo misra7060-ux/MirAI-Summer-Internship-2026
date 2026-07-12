@@ -34,3 +34,27 @@ This repository contains my Streamlit projects completed as part of the MirAI Sc
 
 ### Chat Example
 ![Chat Example](chat.png)
+
+## Assignment 3
+
+### AI Multiverse Chatbot (Enhanced)
+
+##### Features
+
+- Multiple AI Personalities
+- Chat Memory
+- Streamlit Chat Interface
+- Clear Chat Option
+
+##### Technologies Used
+
+- Python
+- Streamlit
+- Google Gemini API
+- python-dotenv
+
+## Project Demo
+
+### Demo Video
+
+[🎥 Assignment 3 Demo](assignment3_demo.mp4)
