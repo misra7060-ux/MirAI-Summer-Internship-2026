@@ -57,4 +57,4 @@ This repository contains my Streamlit projects completed as part of the MirAI Sc
 
 ### Demo Video
 
-[🎥 Assignment 3 Demo](assignment3_demo.mp4)
+[🎥 Assignment 3 Demo](https://drive.google.com/file/d/1LrrOvlVIJZK4T5K2gsiLk_sab2KkvdIa/view?usp=drivesdk)
