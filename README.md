@@ -98,3 +98,78 @@ AI Image Studio is a Streamlit-based web application that generates AI-powered i
 ## 🎥 Demo Video
 Google Drive Link:
 https://drive.google.com/file/d/1iec05dp--QjwgW2BaiXmsn6W6ote2oV1/view?usp=drivesdk
+
+# 🎮 AI Multi-Modal Visual Novel
+
+## 📌 Assignment 5 – Capstone Mini Project
+
+### 📖 Overview
+
+This project was developed as part of **Assignment 5 (Capstone Mini Project)** during the **Virtual Summer Internship 2026** at **MAT (MirAI School of Technology)**.
+
+## ✨ Features
+
+* AI-powered Story Generation using Google Gemini
+* AI Image Generation using Pollinations API
+* Text-to-Speech Narration using gTTS
+* Structured JSON Parsing
+* Dynamic UI Generation
+* Streamlit Session State
+* Story Genre & Art Style Selection
+* Error Handling with try...except
+* Toast Notifications
+* Interactive Streamlit Interface
+
+## 🛠️ Technologies Used
+
+* Python
+* Streamlit
+* Google Gemini API
+* Pollinations API
+* gTTS
+* JSON
+* Requests
+* Pillow
+* python-dotenv
+
+## 📂 Project Structure
+
+```text
+AI-Multi-Modal-Visual-Novel/
+├── app.py
+├── requirements.txt
+├── README.md
+├── .env.example
+└── assets/
+```
+
+## 🚀 Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+## ▶️ Run the Project
+
+```bash
+streamlit run app.py
+```
+
+## 👩‍💻 Developed By
+
+**Riya Mishra**
+
+B.Tech – Computer Science & Engineering
+
+## 🏢 Internship
+
+**MAT (MirAI School of Technology)**
+
+Virtual Summer Internship 2026
+
+## 📜 Assignment
+
+* **Assignment:** 5
+* **Project:** AI Multi-Modal Visual Novel
+* **Type:** Capstone Mini Project
+* **Track:** AI Builder
