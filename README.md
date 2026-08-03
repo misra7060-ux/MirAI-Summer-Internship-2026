@@ -135,7 +135,27 @@ https://www.linkedin.com/posts/riya-mishra-b479b6343_artificialintelligence-gene
 The demo showcases the application's AI-powered branching storylines, dynamic image generation, text-to-speech narration, and interactive Streamlit interface.
 
 ⭐ **Developed as part of Assignment 5 during my internship at MirAI School of Technology.**
+## 🎓 Assignment 6: Hacker-Style Terminal GitHub Profile
 
+### Software & AI Development Student | B.Tech CSE 🚀
+
+```text
+       /\_/\
+      ( o.o )
+       > ^ <
+      ||||||
+
+Name: ......... Riya Mishra
+Role: ......... B.Tech CSE Student
+University: ... AKTU
+Track: ........ MirAI AI Builder Summer Intern '26
+Kernel: ....... Software Engg & AI Development
+OS: ........... Windows 11
+Languages: .... Java, Python, JavaScript, HTML, CSS
+Interests: .... Web Apps, Software Engineering, AI Tools
+Learning: ..... Full Stack Web Dev & Machine Learning
+Location: ..... Uttar Pradesh, India
+Contact: ...... misra7060@gmail.com
 
 
 
