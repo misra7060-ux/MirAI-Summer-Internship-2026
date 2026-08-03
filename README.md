@@ -125,8 +125,6 @@ An interactive AI-powered visual storytelling application that combines text, AI
 - Prompt Engineering
 - JSON Parsing
 - Dynamic UI Development
-- Interactive Storytelling
-
 - ## 🎥 Project Demo
 
 Watch the complete demo of the **AI Multi-Modal Visual Novel** on LinkedIn:
@@ -137,3 +135,7 @@ https://www.linkedin.com/posts/riya-mishra-b479b6343_artificialintelligence-gene
 The demo showcases the application's AI-powered branching storylines, dynamic image generation, text-to-speech narration, and interactive Streamlit interface.
 
 ⭐ **Developed as part of Assignment 5 during my internship at MirAI School of Technology.**
+
+
+
+
