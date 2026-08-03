@@ -17,7 +17,11 @@ st.caption("Track daily screen time & get brutal-but-fair productivity coaching.
 @st.cache_data
 def load_data():
     try:
-        df = pd.read_csv("screentime.csv")
+        # Dynamic File Path Resolution (Fixes Streamlit Cloud missing file error)
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        csv_path = os.path.join(BASE_DIR, "screentime.csv")
+        
+        df = pd.read_csv(csv_path)
         df['Date'] = pd.to_datetime(df['Date']).dt.date
         return df
     except Exception as e:
@@ -31,95 +35,93 @@ if df.empty:
     st.stop()
 
 # --- Phase 2: Sidebar Controls ---
-st.sidebar.header("⚙️ Dashboard Controls")
+st.sidebar.header("Filter Options")
 
-available_dates = df['Date'].unique()
-selected_date = st.sidebar.selectbox("Select Date", available_dates, index=len(available_dates)-1)
+# Date range selection
+available_dates = sorted(df['Date'].unique())
+min_date = available_dates[0]
+max_date = available_dates[-1]
 
-daily_goal_hours = st.sidebar.slider("Daily Screen Time Goal (Hours)", min_value=1, max_value=12, value=4)
-daily_goal_minutes = daily_goal_hours * 60
-
-# Filter Data by Selected Date
-day_data = df[df['Date'] == selected_date]
-
-# High-level Metrics
-total_minutes_today = int(day_data['Minutes_Used'].sum()) if not day_data.empty else 0
-top_app = day_data.loc[day_data['Minutes_Used'].idxmax()]['App_Name'] if not day_data.empty else "N/A"
-delta_minutes = total_minutes_today - daily_goal_minutes
-
-# KPI Row
-col1, col2, col3 = st.columns(3)
-col1.metric("Total Screen Time Today", f"{total_minutes_today // 60}h {total_minutes_today % 60}m")
-col2.metric("Most Used App", top_app)
-col3.metric(
-    "Goal Variance", 
-    f"{abs(delta_minutes) // 60}h {abs(delta_minutes) % 60}m", 
-    delta=f"{delta_minutes} mins vs limit", 
-    delta_color="inverse"
+selected_date_range = st.sidebar.date_input(
+    "Select Date Range",
+    value=(min_date, max_date),
+    min_value=min_date,
+    max_value=max_date
 )
+
+# Handle single date vs range selection
+if isinstance(selected_date_range, tuple) and len(selected_date_range) == 2:
+    start_date, end_date = selected_date_range
+else:
+    start_date = end_date = selected_date_range
+
+# Category Filter
+categories = ["All"] + list(df['Category'].unique())
+selected_category = st.sidebar.selectbox("Filter by Category", categories)
+
+# Apply Filters
+filtered_df = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
+if selected_category != "All":
+    filtered_df = filtered_df[filtered_df['Category'] == selected_category]
+
+# --- Phase 3: Analytics Dashboard ---
+st.header("📊 Screen Time Analytics")
+
+col1, col2, col3 = st.columns(3)
+
+total_minutes = filtered_df['Minutes_Used'].sum()
+total_hours = round(total_minutes / 60, 2)
+most_used_app = filtered_df.groupby('App_Name')['Minutes_Used'].sum().idxmax() if not filtered_df.empty else "N/A"
+
+col1.metric("Total Screen Time", f"{total_hours} hrs")
+col2.metric("Total Minutes", f"{total_minutes} mins")
+col3.metric("Most Used App", most_used_app)
 
 st.divider()
 
-# Charts
 col_chart1, col_chart2 = st.columns(2)
 
 with col_chart1:
-    st.subheader("📊 Category Breakdown Today")
-    cat_summary = day_data.groupby('Category')['Minutes_Used'].sum()
-    st.bar_chart(cat_summary)
+    st.subheader("Category Breakdown")
+    category_data = filtered_df.groupby('Category')['Minutes_Used'].sum().reset_index()
+    st.bar_chart(category_data, x='Category', y='Minutes_Used')
 
 with col_chart2:
-    st.subheader("📈 14-Day Screen Time Trend")
-    trend_data = df.groupby('Date')['Minutes_Used'].sum()
-    st.line_chart(trend_data)
+    st.subheader("Daily Usage Trend")
+    daily_data = filtered_df.groupby('Date')['Minutes_Used'].sum().reset_index()
+    st.line_chart(daily_data, x='Date', y='Minutes_Used')
 
+# --- Phase 4: Gemini AI Coaching ---
 st.divider()
+st.header("🤖 AI Productivity Coach")
 
-# --- Phase 3: AI Coaching Integration ---
-st.subheader("🤖 Brutal-but-Fair AI Coach Insights")
-
-if st.button("Generate AI Coaching Insights"):
+if st.button("Generate AI Feedback", type="primary"):
     if not api_key:
-        st.error("Gemini API key is missing! Please set GEMINI_API_KEY in your .env file.")
+        st.error("Gemini API key is missing. Please set GEMINI_API_KEY in Streamlit Secrets.")
     else:
-        summary_str = cat_summary.to_json()
-        
-        prompt = f"""
-        You are a holistic, brutal-but-fair life coach helping software engineers overcome digital addiction.
-        
-        Screen time breakdown for today (in minutes per category):
-        {summary_str}
-
-        Total Time Spent: {total_minutes_today} minutes.
-        User's Target Limit: {daily_goal_minutes} minutes.
-
-        Analyze this data and give actionable advice:
-        1. Provide a quick, direct assessment of their day without sugarcoating.
-        2. Do NOT just say 'use your phone less'. Suggest concrete physical, real-world activity replacements (e.g., fitness, reading, meal prep, outdoor walking) for wasted screen time.
-        3. Maintain a motivational yet direct tone.
-        """
-
-        with st.spinner("Analyzing habits with Gemini..."):
+        with st.spinner("Analyzing your digital habits..."):
             try:
+                # Prepare summary data for prompt
+                app_summary = filtered_df.groupby(['Category', 'App_Name'])['Minutes_Used'].sum().to_string()
+                
+                prompt = f"""
+                You are a witty, direct, and pragmatic AI Digital Wellbeing Coach.
+                Analyze the following screen time data for a user:
+                
+                {app_summary}
+                
+                Provide a short 3-part response:
+                1. 🎯 **The Reality Check**: Highlight where they are wasting time vs doing meaningful work.
+                2. 🔥 **The Roast**: Give a lighthearted, humorous roast based on their top distraction app.
+                3. 🚀 **Action Plan**: Give 2 specific, actionable rules to improve their digital habits tomorrow.
+                """
+                
                 client = genai.Client(api_key=api_key)
                 response = client.models.generate_content(
                     model="gemini-2.5-flash",
                     contents=prompt,
                 )
-
-                if total_minutes_today > daily_goal_minutes:
-                    st.warning("⚠️ Screen Time Warning: You exceeded your daily goal!")
-                else:
-                    st.success("🎉 Great Job! You stayed within your daily screen time goal.")
-
+                
                 st.markdown(response.text)
-
             except Exception as e:
-                st.error(f"Error calling Gemini API: {e}")
-
-# --- Phase 4: Innovation Deliverable (Shareable Link) ---
-st.sidebar.divider()
-if st.sidebar.button("🔗 Generate Shareable Link"):
-    st.query_params["screen_time"] = str(total_minutes_today)
-    st.query_params["date"] = str(selected_date)
-    st.sidebar.success("URL parameters updated! Copy the browser URL to share.")
+                st.error(f"Failed to generate AI feedback: {e}")
