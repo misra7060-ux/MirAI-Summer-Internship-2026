@@ -1,0 +1,17 @@
+=====================================================
+🚀 Life-OS: AI Digital Wellbeing Coach (Assignment 7)
+=====================================================
+
+🌐 LIVE DEMO LINK:
+https://mirai-summer-internship-2026-qub5cqrzypks4vhqmoaydj.streamlit.app
+
+-----------------------------------------------------
+📌 FOR COMPLETE DETAILS & PROJECT DOCUMENTATION:
+Please check the main README.md file in this folder:
+https://github.com/misra7060-ux/MirAI-Summer-Internship-2026/blob/main/Assignment-7/README.md
+
+It includes:
+- Complete Tech Stack & Setup Instructions
+- Screen Time Analytics & AI Coach Feature Breakdown
+- Directory Structure & Data Pipelines
+=====================================================
