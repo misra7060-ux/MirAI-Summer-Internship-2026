@@ -158,5 +158,150 @@ Location: ..... Uttar Pradesh, India
 Contact: ...... misra7060@gmail.com
 
 
+# 🧠 Life-OS: AI Digital Wellbeing Coach
+
+> **MirAI Virtual Summer Internship 2026 – Assignment 7**
+>
+> Track your daily screen time, analyze productivity, and receive personalized AI-powered coaching using Google Gemini.
+
+---
+
+## 🌐 Live Demo
+
+**🔗 Streamlit App:**  
+https://mirai-summer-internship-2026-qub5cqrzypks4vhqmoaydj.streamlit.app
+
+---
+
+## 📂 GitHub Repository
+
+**📁 Assignment-7:**  
+https://github.com/misra7060-ux/MirAI-Summer-Internship-2026/tree/main/Assignment-7
+
+**📦 Main Internship Repository:**  
+https://github.com/misra7060-ux/MirAI-Summer-Internship-2026
+
+**👤 GitHub Profile:**  
+https://github.com/misra7060-ux
+
+---
+
+## 📖 Project Overview
+
+Life-OS is an AI-powered Digital Wellbeing Dashboard built using **Python**, **Streamlit**, **Pandas**, and **Google Gemini AI**. It helps users analyze their screen-time habits through interactive charts and provides AI-powered productivity coaching with practical suggestions.
+
+---
+
+## ✨ Features
+
+### 📊 Screen Time Analytics
+- Displays total screen time.
+- Identifies the most-used application.
+- Shows productive and non-productive usage.
+
+### 📈 Interactive Visualizations
+- Category-wise usage chart.
+- Daily screen-time trend.
+- Easy-to-understand dashboard.
+
+### 🤖 Gemini AI Productivity Coach
+- Reality Check
+- Fun Productivity Roast
+- Personalized Productivity Score
+- Actionable tips for tomorrow
+
+### ⚙️ Sidebar Filters
+- Date range selection
+- Category filter
+- Interactive dashboard updates
+
+---
+
+## 🛠️ Tech Stack
+
+- Python
+- Streamlit
+- Pandas
+- Google Gemini API (`google-genai`)
+- Streamlit Community Cloud
+
+---
+
+## 📂 Project Structure
+
+```text
+Assignment-7/
+├── app.py
+├── screentime.csv
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🚀 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/misra7060-ux/MirAI-Summer-Internship-2026.git
+```
+
+Go to the project folder:
+
+```bash
+cd MirAI-Summer-Internship-2026/Assignment-7
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the app:
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 📦 Requirements
+
+```text
+streamlit
+pandas
+google-genai
+plotly
+```
+
+---
+
+## 🎯 Learning Outcomes
+
+- Built interactive dashboards using Streamlit.
+- Analyzed data with Pandas.
+- Integrated Google Gemini API.
+- Improved prompt engineering skills.
+- Deployed the application on Streamlit Community Cloud.
+
+---
+
+## 👩‍💻 Developed By
+
+**Riya Mishra**
+
+B.Tech Computer Science & Engineering Student
+
+Python Developer | Web Developer | AI Enthusiast
+
+GitHub: https://github.com/misra7060-ux
+
+---
+
+## 🙏 Acknowledgements
+
+Developed as part of the **MirAI Virtual Summer Internship 2026 – Assignment 7** using Streamlit and Google Gemini AI.
 
 
